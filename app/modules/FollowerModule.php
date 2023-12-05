@@ -14,11 +14,11 @@ class FollowerModule {
     public static function generate($src)
     {
         if (!is_dir($src . '/followers_and_following')) {
-            throw new \Exception('No follower data found in source: ' . $src);
+            throw new \Exception('No follower data found in source');
         }
 
         if (!file_exists($src . '/followers_and_following/following.json')) {
-            throw new \Exception('File \'' . $src . '/followers_and_following/following.json\' does not exist');
+            throw new \Exception('File \'/followers_and_following/following.json\' does not exist');
         }
 
         $following = json_decode(file_get_contents($src . '/followers_and_following/following.json'), true);

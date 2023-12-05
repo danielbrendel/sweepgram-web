@@ -14,7 +14,7 @@ class ZipModule {
     {
         $zip = new ZipArchive();
         if (!$zip->open($src)) {
-            throw new \Exception('Failed to open archive: ' . $src);
+            throw new \Exception('Failed to open archive');
         }
 
         if ($out === null) {
