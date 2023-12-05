@@ -1,10 +1,10 @@
 <div class="page-content">
 	<div class="page-header">
-		<img src="{{ asset('logo.png') }}" alt="Logo"/>
+		<img src="{{ asset('img/logo.png') }}" alt="Logo"/>
 
 		<h1>{{ env('APP_NAME') }}</h1>
 
-		<h2>Check who does not follow you back on Instagram!</h2>
+		<h2>{{ env('APP_DESCRIPTION') }}</h2>
 	</div>
 
 	<div class="page-info page-info-error is-hidden"></div>
