@@ -42,7 +42,7 @@ class IndexController extends BaseController {
 	public function nonfollowers($request)
 	{
 		try {
-			if ((!isset($_FILES['archive'])) || ($_FILES['archive']['error'] !== UPLOAD_ERR_OK) || ($_FILES['archive']['type'] !== 'application/x-zip-compressed')) {
+			if ((!isset($_FILES['archive'])) || ($_FILES['archive']['error'] !== UPLOAD_ERR_OK) || (strpos($_FILES['archive']['type'], 'zip') === false)) {
 				throw new \Exception('Failed to upload file or invalid file uploaded');
 			}
 			
@@ -59,8 +59,15 @@ class IndexController extends BaseController {
 
 			return parent::view(['content', 'data'], ['list' => FollowerModule::getNonfollowers()]);
 		} catch (\Exception $e) {
+			if (file_exists(public_path() . '/archives/' . $tmpname . '.zip')) {
+				unlink(public_path() . '/archives/' . $tmpname . '.zip');
+			}
+
+			if (is_dir(public_path() . '/archives/' . $tmpname)) {
+				DirModule::clearFolder(public_path() . '/archives/' . $tmpname);
+			}
+
 			FlashMessage::setMsg('error', $e->getMessage());
-			var_dump($e->getMessage());exit();
 			return back();
 		}
 	}
