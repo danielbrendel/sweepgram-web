@@ -119,6 +119,30 @@ body {
     border-radius: 4px;
 }
 
+.page-data-no-users {
+    position: relative;
+    margin-top: 50px;
+    padding: 50px;
+    color: rgb(10, 100, 30);
+    background-color: rgb(120, 220, 120);
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 10px;
+}
+
+.page-data-info {
+    position: relative;
+    color: rgb(200, 200, 200);
+    margin-top: 15px;
+}
+
+.page-data-info strong {
+    color: rgb(154, 73, 69);
+}
+
+.page-data-no-users i {
+    color: rgb(50, 76, 35);
+}
+
 .page-data-item {
     position: relative;
     width: 100%;

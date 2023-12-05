@@ -53,9 +53,15 @@ window.vue = new Vue({
 
             window.vue.ajaxRequest('post', location.origin + '/query', formData, function(response){
                 if (response.code == 200) {
-                    response.data.forEach(function(item, index){
-                        target.innerHTML += window.vue.renderItem(item);
-                    });
+                    if (response.data.length > 0) {
+                        response.data.forEach(function(item, index){
+                            target.innerHTML += window.vue.renderItem(item);
+                        });
+
+                        target.innerHTML += '<div class="page-data-info">Found <strong>' + response.data.length + '</strong> users not following back!</div>';
+                    } else {
+                        target.innerHTML = '<div class="page-data-no-users"><i class="fas fa-check-square"></i>&nbsp;No users found</div>'; 
+                    }
                 } else {
                     let elerr = document.querySelector('.page-info-error');
 
