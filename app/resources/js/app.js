@@ -40,11 +40,36 @@ window.vue = new Vue({
                 );
         },
 
-        submitArchive: function(form, label, selected, file) {
-            document.getElementById(selected).innerHTML = file.value.split('\\').pop().split('/').pop();
+        submitArchive: function(target, label, file) {
+            let origLabel = document.getElementById(label).innerHTML;
             document.getElementById(label).innerHTML = '<i class="fas fa-spinner fa-spin fa-lg"></i>';
 
-            document.getElementById(form).submit();
-        }
+            target.innerHTML = '';
+            document.querySelector('.page-info-error').innerHTML = '';
+
+            let formData = new FormData();
+            formData.append('archive', file.files[0]);
+
+            window.vue.ajaxRequest('post', location.origin + '/query', formData, function(response){
+                if (response.code == 200) {
+                    response.data.forEach(function(item, index){
+                        target.innerHTML += window.vue.renderItem(item);
+                    });
+                } else {
+                    document.querySelector('.page-info-error').innerHTML = response.msg;
+                }
+            }, function(){
+                document.getElementById(label).innerHTML = origLabel;
+            }, {
+            });
+        },
+
+        renderItem: function(item) {
+            let html = `
+                <a href="`+ item.href + `" target="_blank"><div class="page-data-item">` + item.value + `</div></a>
+            `;
+
+            return html;
+        },
     }
 });

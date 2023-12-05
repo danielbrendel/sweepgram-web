@@ -7,38 +7,25 @@
 		<h2>Check who does not follow you back on Instagram!</h2>
 	</div>
 
-	@if (FlashMessage::hasMsg('error'))
-	<div class="page-info page-info-error">
-		{{ FlashMessage::getMsg('error') }}
-	</div>
-	@elseif (FlashMessage::hasMsg('success'))
-	<div class="page-info page-info-success">
-		{{ FlashMessage::getMsg('success') }}
-	</div>
-	@endif
+	<div class="page-info page-info-error"></div>
 
 	<div class="page-form">
-		<form method="POST" action="{{ url('/nonfollowers') }}" id="archive-upload" enctype="multipart/form-data">
-			@csrf
-
-			<div class="file has-name is-boxed is-link is-centered">
-				<label class="file-label full-width">
-					<input class="file-input" type="file" name="archive" accept=".zip" onchange="window.vue.submitArchive('archive-upload', 'file-cta', 'selected-file', this);">
-					<span class="file-cta" id="file-cta">
-						<span class="file-icon">
-							<i class="fas fa-upload"></i>
-						</span>
-						<span class="file-label" id="file-label">
-							Choose a file…
-						</span>
+		<div class="file has-name is-boxed is-link is-centered">
+			<label class="file-label full-width">
+				<input class="file-input" type="file" accept=".zip" onchange="window.vue.submitArchive(document.querySelector('.page-data'), 'file-cta', this);">
+				<span class="file-cta" id="file-cta">
+					<span class="file-icon">
+						<i class="fas fa-upload"></i>
 					</span>
-					<span class="file-name is-centered" id="selected-file">
-						No file selected...
+					<span class="file-label" id="file-label">
+						Choose a file…
 					</span>
-				</label>
-			</div>
-		</form>
+				</span>
+			</label>
+		</div>
 	</div>
+
+	<div class="page-data"></div>
 
 	<div class="page-instructions">
 		<h2>How does it work?</h2>

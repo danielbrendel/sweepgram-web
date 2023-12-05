@@ -62,7 +62,7 @@ class FollowerModule {
                 });
 
                 if (!$found) {
-                    static::$nonfollowers[] = $username;
+                    static::$nonfollowers[] = $value['string_list_data'][0];
                 }
             }
         });

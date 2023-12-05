@@ -34,12 +34,12 @@ class IndexController extends BaseController {
 	}
 
 	/**
-	 * Handles URL: /nonfollowers
+	 * Handles URL: /query
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\RedirectHandler|Asatru\View\ViewHandler
+	 * @return Asatru\View\JsonHandler
 	 */
-	public function nonfollowers($request)
+	public function query($request)
 	{
 		try {
 			if ((!isset($_FILES['archive'])) || ($_FILES['archive']['error'] !== UPLOAD_ERR_OK) || (strpos($_FILES['archive']['type'], 'zip') === false)) {
@@ -57,7 +57,10 @@ class IndexController extends BaseController {
 
 			DirModule::clearFolder(public_path() . '/archives/' . $tmpname);
 
-			return parent::view(['content', 'data'], ['list' => FollowerModule::getNonfollowers()]);
+			return json([
+				'code' => 200,
+				'data' => FollowerModule::getNonfollowers()
+			]);
 		} catch (\Exception $e) {
 			if (file_exists(public_path() . '/archives/' . $tmpname . '.zip')) {
 				unlink(public_path() . '/archives/' . $tmpname . '.zip');
@@ -67,8 +70,10 @@ class IndexController extends BaseController {
 				DirModule::clearFolder(public_path() . '/archives/' . $tmpname);
 			}
 
-			FlashMessage::setMsg('error', $e->getMessage());
-			return back();
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
 		}
 	}
 }

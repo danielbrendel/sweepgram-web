@@ -17,6 +17,6 @@
 
 return [
     array('/', 'GET', 'index@index'),
-    array('/nonfollowers', 'POST', 'index@nonfollowers'),
+    array('/query', 'POST', 'index@query'),
     array('$404', 'ANY', 'error404@index')
 ];
