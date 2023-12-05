@@ -20,7 +20,57 @@
 
     <body>
         <div id="app" class="page-main">
-            {%content%}
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-2"></div>
+
+                    <div class="column is-8">
+                        {%content%}
+                    </div>
+
+                    <div class="column is-2"></div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <div class="columns">
+                    <div class="column is-3"></div>
+
+                    <div class="column is-3">
+                        <div class="is-margin-bottom-10">&copy; {{ date('Y') }} by {{ env('APP_AUTHOR') }}.</div>
+
+                        <div>This tool is made in the hope that it is useful. We do not guarantee that the results are correct. Please <a href="mailto:{{ env('APP_CONTACT') }}">report</a> bugs and issues.</div>
+                    </div>
+
+                    <div class="column is-3 is-desktop-right">
+                        <span>
+                            <a href="https://github.com/danielbrendel">
+                                <i class="fab fa-github fa-2x"></i>
+                            </a>
+                        </span>
+
+                        <span>
+                            <a href="https://www.youtube.com/channel/UCPETT7XPpvLHeUTZ-4l-K5w">
+                                <i class="fab fa-youtube fa-2x"></i>
+                            </a>
+                        </span>
+
+                        <span>
+                            <a href="https://www.linkedin.com/in/daniel-brendel-88375a248">
+                                <i class="fab fa-linkedin fa-2x"></i>
+                            </a>
+                        </span>
+
+                        <span>
+                            <a href="https://mastodon.social/@dbdev">
+                                <i class="fab fa-mastodon fa-2x"></i>
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="column is-3"></div>
+                </div>
+            </div>
         </div>
 
         <script src="{{ asset('js/app.js', true) }}"></script>

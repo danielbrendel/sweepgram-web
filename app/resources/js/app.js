@@ -46,6 +46,7 @@ window.vue = new Vue({
 
             target.innerHTML = '';
             document.querySelector('.page-info-error').innerHTML = '';
+            document.querySelector('.page-info-error').classList.add('is-hidden');
 
             let formData = new FormData();
             formData.append('archive', file.files[0]);
@@ -56,7 +57,13 @@ window.vue = new Vue({
                         target.innerHTML += window.vue.renderItem(item);
                     });
                 } else {
-                    document.querySelector('.page-info-error').innerHTML = response.msg;
+                    let elerr = document.querySelector('.page-info-error');
+
+                    elerr.innerHTML = response.msg;
+
+                    if (elerr.classList.contains('is-hidden')) {
+                        elerr.classList.remove('is-hidden');
+                    }
                 }
             }, function(){
                 document.getElementById(label).innerHTML = origLabel;
@@ -65,8 +72,15 @@ window.vue = new Vue({
         },
 
         renderItem: function(item) {
+            let td = new Date(item.timestamp * 1000);
+
             let html = `
-                <a href="`+ item.href + `" target="_blank"><div class="page-data-item">` + item.value + `</div></a>
+                <div class="page-data-item">
+                    <div class="page-data-item-username">` + item.value + `</div>
+                    <div class="page-data-item-timestamp">` + td.toLocaleDateString('en-US') + `</div>
+                    <div class="page-data-item-link"><a href="` + item.href + `" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                
+                </div>
             `;
 
             return html;

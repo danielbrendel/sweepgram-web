@@ -7,7 +7,7 @@
 		<h2>Check who does not follow you back on Instagram!</h2>
 	</div>
 
-	<div class="page-info page-info-error"></div>
+	<div class="page-info page-info-error is-hidden"></div>
 
 	<div class="page-form">
 		<div class="file has-name is-boxed is-link is-centered">
@@ -28,17 +28,23 @@
 	<div class="page-data"></div>
 
 	<div class="page-instructions">
-		<h2>How does it work?</h2>
+		<h2><i class="fas fa-caret-square-right"></i> How does it work?</h2>
 
-		<ul>
-			<li>Go to the request data section on Instagram</li>
-			<li>Only select followers and followings as data</li>
-			<li>Choose all time history</li>
-			<li>Select JSON as data type</li>
-			<li>Perform the request</li>
-			<li>Wait until Instagram informs you that your data is ready</li>
-			<li>Now download the ZIP-Archive from Instagram</li>
-			<li>Submit your archive here and see who does not follow you back!</li>
-		</ul>
+		<ol>
+			<li>Go to your <strong>profile</strong> and then to <strong>Settings and privacy</strong></li>
+			<li>Switch to <strong>Accounts Center</strong> and then to <strong>Your information and permissions</strong>
+				<ol>
+					<li>Go to <strong>Download your information</strong></li>
+					<li>Hit <strong>Request a download</strong></li>
+					<li>Hit <strong>Select types of information</strong></li>
+					<li>Select <strong>Followers and following</strong> and hit <strong>Next</strong></li>
+					<li>Select format <strong>JSON</strong> and date range <strong>All time</strong></li>
+					<li>Finally hit <strong>Submit request</strong></li>
+				</ol>
+			</li>
+			
+			<li>Instagram will inform you when your download is ready</li>
+			<li>You can then download the archive and submit it here!</li>
+		</ol>
 	</div>
 </div>
