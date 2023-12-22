@@ -13,25 +13,25 @@ class FollowerModule {
      */
     public static function generate($src)
     {
-        if (!is_dir($src . '/followers_and_following')) {
+        if (!is_dir($src . '/connections/followers_and_following')) {
             throw new \Exception('No follower data found in source');
         }
 
-        if (!file_exists($src . '/followers_and_following/following.json')) {
-            throw new \Exception('File \'/followers_and_following/following.json\' does not exist');
+        if (!file_exists($src . '/connections/followers_and_following/following.json')) {
+            throw new \Exception('File \'/connections/followers_and_following/following.json\' does not exist');
         }
 
-        $following = json_decode(file_get_contents($src . '/followers_and_following/following.json'), true);
+        $following = json_decode(file_get_contents($src . '/connections/followers_and_following/following.json'), true);
         if (!isset($following['relationships_following'])) {
             throw new \Exception('Key \'relationships_following\' not found in following.json');
         }
 
         $followers = [];
 
-        $files = scandir($src . '/followers_and_following');
+        $files = scandir($src . '/connections/followers_and_following');
         foreach ($files as $file) {
             if (strpos($file, 'followers') !== false) {
-                $followers[] = json_decode(file_get_contents($src . '/followers_and_following/' . $file), true);
+                $followers[] = json_decode(file_get_contents($src . '/connections/followers_and_following/' . $file), true);
             }
         }
 
