@@ -1,0 +1,13 @@
+{
+    "name": "Instadelity",
+    "short_name": "Instadelity",
+    "icons": [{
+        "src": "img/logo.png",
+        "sizes": "256x256",
+        "type": "image/png"
+    }],
+    "start_url": "/",
+    "display": "fullscreen",
+    "background_color": "white",
+    "theme_color": "white"
+}
