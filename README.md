@@ -1,6 +1,6 @@
 <h1 align="center">
     <img src="public/img/logo.png" width="128"/><br/>
-    Instadelity
+    Sweepgram
 </h1>
 
 <p align="center">
