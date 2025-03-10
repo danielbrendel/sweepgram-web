@@ -59,6 +59,12 @@
 
                     <div class="column is-3 is-desktop-right">
                         <span>
+                            <a href="mailto:{{ env('APP_CONTACT') }}" target="_blank">
+                                <i class="fas fa-envelope fa-2x"></i>
+                            </a>
+                        </span>
+
+                        <span>
                             <a href="{{ env('LINK_GITHUB') }}" target="_blank">
                                 <i class="fab fa-github fa-2x"></i>
                             </a>
