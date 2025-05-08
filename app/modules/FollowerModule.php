@@ -39,7 +39,7 @@ class FollowerModule {
 
         foreach ($followers as $followers_subarr) {
             foreach ($followers_subarr as $key => $value) {
-                $followers_all[$key] = $value;
+                $followers_all[] = $value;
             }
         }
 
@@ -53,7 +53,7 @@ class FollowerModule {
                 
                 $found = false;
 
-                array_walk($followers, function($value2, $key2) use ($username, &$found) {
+                array_walk($followers, function($value2) use ($username, &$found) {
                     if (isset($value2['string_list_data'][0]['value'])) {
                         if ($username === $value2['string_list_data'][0]['value']) {
                             $found = true;
